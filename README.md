@@ -14,7 +14,7 @@ The current implementation provides a command-line interface to interact with th
 - **Search Functionality**: Provide a search feature to find specific job orders based on various criteria 
 	- job order number
 	- customer's last name
-- DAO is configurable as it uses an interface
+- **Flexible DAO Implementation**: DAO is configurable as it uses an interface
 - **Basic Validation**: Implement validation rules using MySQL to prevent invalid input during job order creation and updates
 - **Command-line Interface**: Provide a command-line interface for interacting with the CRUD operations
 - **Data Persistence**: Store job orders and related information in a MySQL database using Hibernate
@@ -39,6 +39,7 @@ The following are the areas that must be improved
 
 
 ## Technologies Used
-1. Spring Boot
-2. Hibernate
-3. MySQL
+1. Java
+2. Spring Boot
+3. Hibernate
+4. MySQL
