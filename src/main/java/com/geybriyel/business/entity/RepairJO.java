@@ -13,6 +13,7 @@ public class RepairJO {
     @Column(name = "job_order_number")
     private int jobNumber;
 
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "job_order_date")
     private Date jobDate;
 
@@ -53,15 +54,14 @@ public class RepairJO {
 
     @Override
     public String toString() {
-        return "RepairJO{" +
-                "jobNumber=" + jobNumber +
-                ", jobDate=" + jobDate +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", telephoneNumber='" + telephoneNumber + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+        return "-- Job Order--" +
+                "\nJob Order Number: " + jobNumber +
+                "\nJob Order Date: " + jobDate +
+                "\nFirst Name: " + firstName +
+                "\nLast Name: " + lastName +
+                "\nPhone Number: " + phoneNumber +
+                "\nTelephone Number: " + telephoneNumber +
+                "\nAddress" + address;
     }
 
     public int getJobNumber() {
