@@ -49,4 +49,11 @@ public class JobOrderDAOImpl implements OrderDAO {
         this.entityManager.merge(repairJO);
     }
 
+    @Override
+    @Transactional
+    public void delete(Integer id) {
+        RepairJO jo = findById(id);
+        entityManager.remove(jo);
+    }
+
 }
