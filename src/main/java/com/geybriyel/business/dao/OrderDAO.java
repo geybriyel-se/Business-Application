@@ -12,4 +12,6 @@ public interface OrderDAO {
     List<RepairJO> findByLastName(String lastName);
 
     List<RepairJO> findAll();
+
+    void update(RepairJO repairJO);
 }

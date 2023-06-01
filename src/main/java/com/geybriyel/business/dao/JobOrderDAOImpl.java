@@ -43,4 +43,10 @@ public class JobOrderDAOImpl implements OrderDAO {
         return query.getResultList();
     }
 
+    @Override
+    @Transactional
+    public void update(RepairJO repairJO) {
+        this.entityManager.merge(repairJO);
+    }
+
 }
