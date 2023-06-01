@@ -61,7 +61,8 @@ public class RepairJO {
                 "\nLast Name: " + lastName +
                 "\nPhone Number: " + phoneNumber +
                 "\nTelephone Number: " + telephoneNumber +
-                "\nAddress" + address;
+                "\nAddress: " + address +
+                "\n--------------------------------\n";
     }
 
     public int getJobNumber() {
