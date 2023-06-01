@@ -10,4 +10,6 @@ public interface OrderDAO {
     RepairJO findById(Integer id);
 
     List<RepairJO> findByLastName(String lastName);
+
+    List<RepairJO> findAll();
 }

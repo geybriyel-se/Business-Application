@@ -36,4 +36,11 @@ public class JobOrderDAOImpl implements OrderDAO {
         query.setParameter("param", lastName);
         return query.getResultList();
     }
+
+    @Override
+    public List<RepairJO> findAll() {
+        TypedQuery<RepairJO> query = entityManager.createQuery("FROM RepairJO ORDER BY lastName", RepairJO.class);
+        return query.getResultList();
+    }
+
 }
