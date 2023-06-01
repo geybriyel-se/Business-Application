@@ -89,6 +89,14 @@ public class BusinessApplication {
 				askAnotherTransaction(orderDAO);
 				break;
 			}
+			case 7: {
+				deleteAllOrders(orderDAO);
+				askAnotherTransaction(orderDAO);
+				break;
+			}
+			case 8: {
+				break;
+			}
 		}
 	}
 
@@ -101,10 +109,20 @@ public class BusinessApplication {
 			showMainMenu(orderDAO);
 		}
 	}
+
+	// add functionality: to display number of entries to be deleted during confirmation
 	private void deleteAllOrders(OrderDAO orderDAO) {
-		System.out.println("Deleting all orders...");
-		int numDeleted = orderDAO.deleteAll();
-		System.out.println(numDeleted + " orders deleted");
+		System.out.println("\n...Deleting all orders...");
+		System.out.print("Are you sure you want to delete ALL orders? y/n: ");
+		Scanner scan = new Scanner(System.in);
+		String ans = scan.nextLine();
+
+		if (ans.equalsIgnoreCase("y")) {
+			int numDeleted = orderDAO.deleteAll();
+			System.out.println("\nDeleted " + numDeleted + " orders...\n");
+		} else {
+			showMainMenu(orderDAO);
+		}
 	}
 
 	private void deleteOrder(OrderDAO orderDAO) {
@@ -113,7 +131,6 @@ public class BusinessApplication {
 
 		System.out.print("Enter JO Number of order to be deleted: ");
 		int joNumber = scanner.nextInt();
-
 
 		System.out.println("Job Order to be deleted:");
 		System.out.println(orderDAO.findById(joNumber));
