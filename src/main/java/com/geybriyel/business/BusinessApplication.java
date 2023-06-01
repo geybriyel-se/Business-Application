@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import javax.security.sasl.SaslClient;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
@@ -45,12 +46,13 @@ public class BusinessApplication {
 			System.out.println("2: Find an order by JO number");
 			System.out.println("3: Find order/s based on client's last name");
 			System.out.println("4: Show all orders");
-			System.out.println("5: Delete an order by JO");
-			System.out.println("6: Delete all orders");
-			System.out.println("7: Quit");
+			System.out.println("5: Update an order");
+			System.out.println("6: Delete an order by JO");
+			System.out.println("7: Delete all orders");
+			System.out.println("8: Quit");
 			System.out.print("Enter transaction: ");
 			transactionType = scanner.nextInt();
-		} while (transactionType < 1 || transactionType > 7);
+		} while (transactionType < 1 || transactionType > 8);
 
 		executeTransaction(orderDAO, transactionType);
 	}
@@ -77,6 +79,11 @@ public class BusinessApplication {
 				askAnotherTransaction(orderDAO);
 				break;
 			}
+			case 5: {
+				updateOrder(orderDAO);
+				askAnotherTransaction(orderDAO);
+				break;
+			}
 		}
 	}
 
@@ -96,18 +103,84 @@ public class BusinessApplication {
 	}
 
 	private void deleteOrder(OrderDAO orderDAO) {
+
 		int id = 1;
 		orderDAO.delete(id);
 		System.out.println("Order deleted...");
 	}
 
 	private void updateOrder(OrderDAO orderDAO) {
-		int id = 1;
-		System.out.println("To update: order #" + id + ": " + orderDAO.findById(id));
-		RepairJO order = orderDAO.findById(id);
-		order.setLastName("...UPDATING...");
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("\n...Updating an order...");
+
+		System.out.print("Enter JO Number of order to be updated: ");
+		int joNumber = scanner.nextInt();
+
+		RepairJO order = orderDAO.findById(joNumber);
+		System.out.println("Order Found.\n");
+		System.out.println(orderDAO.findById(joNumber));
+
+		int detailNumber = getDetailNumber();
+
+		Scanner scan = new Scanner(System.in);
+		switch (detailNumber) {
+
+			case 1 : {
+				System.out.println("\n...Updating first name...");
+				System.out.print("Enter new first name: ");
+				String firstName = scan.nextLine();
+				order.setFirstName(firstName);
+				break;
+			}
+			case 2 : {
+				System.out.println("\n...Updating last name...");
+				System.out.print("Enter new last name: ");
+				String lastName = scan.nextLine();
+				order.setLastName(lastName);
+				break;
+			}
+			case 3 : {
+				System.out.println("\n...Updating phone number...");
+				System.out.print("Enter new phone number: ");
+				String phoneNumber = scan.nextLine();
+				order.setPhoneNumber(phoneNumber);
+				break;
+			}
+			case 4 : {
+				System.out.println("\n...Updating telephone number...");
+				System.out.print("Enter new telephone number: ");
+				String telephoneNumber = scan.nextLine();
+				order.setTelephoneNumber(telephoneNumber);
+				break;
+			}
+			case 5 : {
+				System.out.println("\n...Updating address...");
+				System.out.print("Enter new address: ");
+				String address = scan.nextLine();
+				order.setAddress(address);
+				break;
+			}
+		}
 		orderDAO.update(order);
-		System.out.println("Updated: " + orderDAO.findById(id));
+		System.out.println("\nUpdated...\n");
+		System.out.println(orderDAO.findById(joNumber));
+	}
+
+	public int getDetailNumber() {
+		Scanner scanner = new Scanner(System.in);
+		int detail;
+		do {
+			System.out.println("Detail Menu");
+			System.out.println(
+					"1: First Name" +
+					"\n2: Last Name" +
+					"\n3: Phone Number " +
+					"\n4: Telephone Number" +
+					"\n5: Address");
+			System.out.print("Select detail to update: ");
+			detail = scanner.nextInt();
+		} while (detail < 1 || detail > 5);
+		return detail;
 	}
 
 	private void printList(List<RepairJO> found) {
