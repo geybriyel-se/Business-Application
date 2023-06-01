@@ -44,12 +44,13 @@ public class BusinessApplication {
 			System.out.println("1: Add an order");
 			System.out.println("2: Find an order by JO number");
 			System.out.println("3: Find order/s based on client's last name");
-			System.out.println("4: Delete an order by JO");
-			System.out.println("5: Delete all orders");
-			System.out.println("6: Quit");
+			System.out.println("4: Show all orders");
+			System.out.println("5: Delete an order by JO");
+			System.out.println("6: Delete all orders");
+			System.out.println("7: Quit");
 			System.out.print("Enter transaction: ");
 			transactionType = scanner.nextInt();
-		} while (transactionType < 1 || transactionType > 6);
+		} while (transactionType < 1 || transactionType > 7);
 
 		executeTransaction(orderDAO, transactionType);
 	}
@@ -68,6 +69,11 @@ public class BusinessApplication {
 			}
 			case 3: {
 				findOrderByLastName(orderDAO);
+				askAnotherTransaction(orderDAO);
+				break;
+			}
+			case 4: {
+				findAllOrders(orderDAO);
 				askAnotherTransaction(orderDAO);
 				break;
 			}
@@ -110,7 +116,7 @@ public class BusinessApplication {
 		}
 	}
 	private void findAllOrders(OrderDAO orderDAO) {
-		System.out.println("Printing all orders...");
+		System.out.println("\n...Retrieving all orders...");
 		printList(orderDAO.findAll());
 	}
 
