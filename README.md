@@ -1,4 +1,4 @@
-# Business-Application
+# Job Order Management App
 
 This is a CRUD application for managing job orders in a business environment. 
 The project is built using Spring Boot and Hibernate, and it is connected to a MySQL database. 
