@@ -14,6 +14,7 @@ The current implementation provides a command-line interface to interact with th
 - **Search Functionality**: Provide a search feature to find specific job orders based on various criteria 
 	- job order number
 	- customer's last name
+- DAO is configurable as it uses an interface
 - **Basic Validation**: Implement validation rules using MySQL to prevent invalid input during job order creation and updates
 - **Command-line Interface**: Provide a command-line interface for interacting with the CRUD operations
 - **Data Persistence**: Store job orders and related information in a MySQL database using Hibernate
@@ -28,6 +29,7 @@ The following are the areas that must be improved
 - Problem with the Scanner object
 - Better input validation of fields such as the phone number
 - Addition of Sort and Filter functionality
+- RepairJO (entity) needs a parent class to make it configurable
 - Other advanced features such as security, reporting...
 
 ## Dev Tools Used
