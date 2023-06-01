@@ -35,14 +35,7 @@ public class BusinessApplication {
 			Scanner scanner = new Scanner(System.in);
 			int transactionType;
 			do {
-				System.out.println("MENU");
-				System.out.println("1: Add an order");
-				System.out.println("2: Find an order by JO number");
-				System.out.println("3: Find order/s based on client's last name");
-				System.out.println("4: Delete an order by JO");
-				System.out.println("5: Delete all orders");
-				System.out.println("6: Quit");
-				System.out.print("Enter transaction: ");
+				showMainMenu();
 				transactionType = scanner.nextInt();
 			} while (transactionType < 1 || transactionType > 6);
 
@@ -57,6 +50,17 @@ public class BusinessApplication {
 				}
 			}
 		};
+	}
+
+	public void showMainMenu() {
+		System.out.println("MENU");
+		System.out.println("1: Add an order");
+		System.out.println("2: Find an order by JO number");
+		System.out.println("3: Find order/s based on client's last name");
+		System.out.println("4: Delete an order by JO");
+		System.out.println("5: Delete all orders");
+		System.out.println("6: Quit");
+		System.out.print("Enter transaction: ");
 	}
 
 	private void deleteAllOrders(OrderDAO orderDAO) {
