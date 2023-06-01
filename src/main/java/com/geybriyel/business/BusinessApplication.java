@@ -66,6 +66,11 @@ public class BusinessApplication {
 				askAnotherTransaction(orderDAO);
 				break;
 			}
+			case 3: {
+				findOrderByLastName(orderDAO);
+				askAnotherTransaction(orderDAO);
+				break;
+			}
 		}
 	}
 
@@ -109,9 +114,16 @@ public class BusinessApplication {
 		printList(orderDAO.findAll());
 	}
 
+	// no functionality when order is not found
 	private void findOrderByLastName(OrderDAO orderDAO) {
-		System.out.println("...Found by last name....");
-		printList(orderDAO.findByLastName("Venema"));
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("\n...Retrieving an order by Client's last name...");
+
+		System.out.print("Enter last name: ");
+		String lastName = scanner.nextLine();
+
+		System.out.println("Order/s Found.\n");
+		printList(orderDAO.findByLastName(lastName));
 	}
 
 	// no functionality to check if number exists
@@ -122,7 +134,7 @@ public class BusinessApplication {
 		System.out.print("Enter JO Number: ");
 		int joNumber = scanner.nextInt();
 
-		System.out.println("Order Found.");
+		System.out.println("Order Found.\n");
 		System.out.println(orderDAO.findById(joNumber));
 	}
 
