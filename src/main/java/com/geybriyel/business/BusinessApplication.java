@@ -7,9 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import javax.security.sasl.SaslClient;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -22,14 +20,6 @@ public class BusinessApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(OrderDAO orderDAO) {
 		return runner -> {
-//			saveOrder(orderDAO);
-//			findOrderById(orderDAO);
-//			findOrderByLastName(orderDAO);
-//			findAllOrders(orderDAO);
-//			updateOrder(orderDAO);
-//			deleteOrder(orderDAO);
-//			deleteAllOrders(orderDAO);
-
 			System.out.println("=======================");
 			System.out.println("Welcome to BusinessName");
 			System.out.println("=======================");
