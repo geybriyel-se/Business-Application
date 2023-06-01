@@ -32,16 +32,13 @@ The following are the areas that must be improved
 - RepairJO (entity) needs a parent class to make it configurable
 - Other advanced features such as security, reporting...
 
-## Dev Tools Used
+## Tools Used
 1. IntelliJ IDEA
-2. MySQL Workbench
+2. Spring Initializr
+3. MySQL Workbench
 
-## Dev Technologies Used
-1. MySQL
-2. Spring Boot
-3. Hibernate
-4. Dependencies:
-    - SpringBoot Dev Tools
-    - Spring Data JPA
-    - MySQL Driver
-    - Spring Initializr
+
+## Technologies Used
+1. Spring Boot
+2. Hibernate
+3. MySQL
