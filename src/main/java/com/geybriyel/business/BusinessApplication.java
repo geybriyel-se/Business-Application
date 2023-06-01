@@ -84,6 +84,11 @@ public class BusinessApplication {
 				askAnotherTransaction(orderDAO);
 				break;
 			}
+			case 6: {
+				deleteOrder(orderDAO);
+				askAnotherTransaction(orderDAO);
+				break;
+			}
 		}
 	}
 
@@ -103,10 +108,26 @@ public class BusinessApplication {
 	}
 
 	private void deleteOrder(OrderDAO orderDAO) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("\n...Deleting an order...");
 
-		int id = 1;
-		orderDAO.delete(id);
-		System.out.println("Order deleted...");
+		System.out.print("Enter JO Number of order to be deleted: ");
+		int joNumber = scanner.nextInt();
+
+
+		System.out.println("Job Order to be deleted:");
+		System.out.println(orderDAO.findById(joNumber));
+
+		System.out.print("Are you sure you want to delete? y/n: ");
+		Scanner scan = new Scanner(System.in);
+		String ans = scan.nextLine();
+
+		if (ans.equalsIgnoreCase("y")) {
+			orderDAO.delete(joNumber);
+			System.out.println("\nDeleted...\n");
+		} else {
+			deleteOrder(orderDAO);
+		}
 	}
 
 	private void updateOrder(OrderDAO orderDAO) {
