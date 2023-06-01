@@ -6,7 +6,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "job_order")
-public class JobOrder implements Order {
+public class RepairJO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,10 +31,10 @@ public class JobOrder implements Order {
     @Column(name = "address")
     private String address;
 
-    public JobOrder() {
+    public RepairJO() {
     }
 
-    public JobOrder(Date jobDate, String firstName, String lastName, String phoneNumber, String telephoneNumber, String address) {
+    public RepairJO(Date jobDate, String firstName, String lastName, String phoneNumber, String telephoneNumber, String address) {
         this.jobDate = jobDate;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -43,12 +43,25 @@ public class JobOrder implements Order {
         this.address = address;
     }
 
-    public JobOrder(String firstName, String lastName, String phoneNumber, String telephoneNumber, String address) {
+    public RepairJO(String firstName, String lastName, String phoneNumber, String telephoneNumber, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.telephoneNumber = telephoneNumber;
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "RepairJO{" +
+                "jobNumber=" + jobNumber +
+                ", jobDate=" + jobDate +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", telephoneNumber='" + telephoneNumber + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 
     public int getJobNumber() {
