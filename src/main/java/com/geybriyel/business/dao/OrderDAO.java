@@ -16,4 +16,6 @@ public interface OrderDAO {
     void update(RepairJO repairJO);
 
     void delete(Integer id);
+
+    int deleteAll();
 }

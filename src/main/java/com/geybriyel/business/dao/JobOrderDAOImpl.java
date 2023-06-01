@@ -56,4 +56,10 @@ public class JobOrderDAOImpl implements OrderDAO {
         entityManager.remove(jo);
     }
 
+    @Override
+    @Transactional
+    public int deleteAll() {
+        return entityManager.createQuery("DELETE FROM RepairJO").executeUpdate();
+    }
+
 }
