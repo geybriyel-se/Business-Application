@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -28,41 +29,54 @@ public class BusinessApplication {
 //			deleteOrder(orderDAO);
 //			deleteAllOrders(orderDAO);
 
-
-
+			System.out.println("=======================");
 			System.out.println("Welcome to BusinessName");
-			System.out.println("========================");
-			Scanner scanner = new Scanner(System.in);
-			int transactionType;
-			do {
-				showMainMenu();
-				transactionType = scanner.nextInt();
-			} while (transactionType < 1 || transactionType > 6);
-
-			System.out.println("You selected: " + transactionType);
-			switch (transactionType) {
-				case 1: {
-					saveOrder(orderDAO);
-					break;
-				}
-				case 2: {
-					findOrderById(orderDAO);
-				}
-			}
+			System.out.println("=======================");
+			showMainMenu(orderDAO);
 		};
 	}
 
-	public void showMainMenu() {
-		System.out.println("MENU");
-		System.out.println("1: Add an order");
-		System.out.println("2: Find an order by JO number");
-		System.out.println("3: Find order/s based on client's last name");
-		System.out.println("4: Delete an order by JO");
-		System.out.println("5: Delete all orders");
-		System.out.println("6: Quit");
-		System.out.print("Enter transaction: ");
+	public void showMainMenu(OrderDAO orderDAO) {
+		Scanner scanner = new Scanner(System.in);
+		int transactionType;
+		do {
+			System.out.println("\nMAIN MENU");
+			System.out.println("1: Add an order");
+			System.out.println("2: Find an order by JO number");
+			System.out.println("3: Find order/s based on client's last name");
+			System.out.println("4: Delete an order by JO");
+			System.out.println("5: Delete all orders");
+			System.out.println("6: Quit");
+			System.out.print("Enter transaction: ");
+			transactionType = scanner.nextInt();
+		} while (transactionType < 1 || transactionType > 6);
+
+		executeTransaction(orderDAO, transactionType);
 	}
 
+	public void executeTransaction(OrderDAO orderDAO, int transactionType) {
+		switch (transactionType) {
+			case 1: {
+				saveOrder(orderDAO);
+				askAnotherTransaction(orderDAO);
+				break;
+			}
+			case 2: {
+				findOrderById(orderDAO);
+
+			}
+		}
+	}
+
+	public void askAnotherTransaction(OrderDAO orderDAO) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Make another transaction? y/n: ");
+		String ans = scanner.nextLine();
+
+		if (ans.equalsIgnoreCase("y")) {
+			showMainMenu(orderDAO);
+		}
+	}
 	private void deleteAllOrders(OrderDAO orderDAO) {
 		System.out.println("Deleting all orders...");
 		int numDeleted = orderDAO.deleteAll();
