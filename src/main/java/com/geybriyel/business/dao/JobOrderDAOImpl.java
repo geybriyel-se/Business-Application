@@ -20,7 +20,7 @@ public class JobOrderDAOImpl implements OrderDAO {
 
     @Override
     public void save(RepairJO order) {
-        this.entityManager.persist(order);
+        this.entityManager.merge(order);
     }
 
     @Override
