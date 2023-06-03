@@ -13,8 +13,6 @@ public interface OrderDAO {
 
     List<RepairJO> findAll();
 
-    void update(RepairJO repairJO);
-
     void delete(Integer id);
 
     int deleteAll();
