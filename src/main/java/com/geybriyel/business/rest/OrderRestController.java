@@ -60,4 +60,9 @@ public class OrderRestController {
         orderService.save(order);
         return "Order updated.";
     }
+
+    @DeleteMapping("/orders/delete/{orderId}")
+    public void deleteOrder(@PathVariable int orderId) {
+        orderService.delete(orderId);
+    }
 }
