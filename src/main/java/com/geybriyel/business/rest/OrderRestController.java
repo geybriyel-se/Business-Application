@@ -27,7 +27,7 @@ public class OrderRestController {
     }
 
     // return an order by id
-    @GetMapping("/orders/{orderId}")
+    @GetMapping("/orders/id/{orderId}")
     public RepairJO getOrderById(@PathVariable int orderId) {
         RepairJO order = orderService.findById(orderId);
 
@@ -36,5 +36,16 @@ public class OrderRestController {
         }
 
         return order;
+    }
+
+    @GetMapping("/orders/lastname/{lastName}")
+    public List<RepairJO> getOrderByLastName(@PathVariable String lastName) {
+        List<RepairJO> orders = orderService.findByLastName(lastName);
+
+        if (orders == null) {
+            throw new RuntimeException("Last name not found - " + lastName);
+        }
+
+        return orders;
     }
 }
