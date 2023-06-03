@@ -65,4 +65,9 @@ public class OrderRestController {
     public void deleteOrder(@PathVariable int orderId) {
         orderService.delete(orderId);
     }
+
+    @DeleteMapping("/orders")
+    public void deleteAllOrders() {
+        orderService.deleteAll();
+    }
 }
