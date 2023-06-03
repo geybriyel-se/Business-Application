@@ -1,5 +1,7 @@
 # Job Order Management API
 A RESTful API for managing job orders in a business environment.
+It provides endpoints for creating, reading, updating, and deleting job orders, 
+enabling CRUD operations.
 
 ## Features
 - **Job Order Creation**: Create new job orders with customer details 
