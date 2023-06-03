@@ -18,9 +18,7 @@ public class JobOrderDAOImpl implements OrderDAO {
         this.entityManager = entityManager;
     }
 
-
     @Override
-    @Transactional
     public void save(RepairJO order) {
         this.entityManager.persist(order);
     }
@@ -44,20 +42,12 @@ public class JobOrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    @Transactional
-    public void update(RepairJO repairJO) {
-        this.entityManager.merge(repairJO);
-    }
-
-    @Override
-    @Transactional
     public void delete(Integer id) {
         RepairJO jo = findById(id);
         entityManager.remove(jo);
     }
 
     @Override
-    @Transactional
     public int deleteAll() {
         return entityManager.createQuery("DELETE FROM RepairJO").executeUpdate();
     }
