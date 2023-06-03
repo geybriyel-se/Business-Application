@@ -54,4 +54,10 @@ public class OrderRestController {
         return "Order saved.";
     }
 
+    // update an existing order
+    @PutMapping("/orders")
+    public String updateOrder(@RequestBody RepairJO order) {
+        orderService.save(order);
+        return "Order updated.";
+    }
 }
