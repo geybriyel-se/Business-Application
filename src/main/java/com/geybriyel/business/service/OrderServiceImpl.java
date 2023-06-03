@@ -3,10 +3,12 @@ package com.geybriyel.business.service;
 import com.geybriyel.business.dao.OrderDAO;
 import com.geybriyel.business.entity.RepairJO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public class OrderServiceImpl implements OrderService {
     private OrderDAO orderDAO;
 
