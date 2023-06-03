@@ -3,10 +3,7 @@ package com.geybriyel.business.rest;
 import com.geybriyel.business.entity.RepairJO;
 import com.geybriyel.business.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -47,6 +44,14 @@ public class OrderRestController {
         }
 
         return orders;
+    }
+
+    // Save an order
+    @PostMapping("/orders")
+    public String addOrder(@RequestBody RepairJO order) {
+        order.setJobNumber(0);
+        orderService.save(order);
+        return "Order saved.";
     }
 
 }
