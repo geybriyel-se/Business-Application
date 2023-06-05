@@ -27,6 +27,7 @@ public class SecurityConfig {
                 configurer
                         .requestMatchers(HttpMethod.GET, "/api/orders").hasRole("EMPLOYEE")
                         .requestMatchers(HttpMethod.GET, "/api/orders/id/**").hasRole("EMPLOYEE")
+                        .requestMatchers(HttpMethod.GET, "/api/orders/lastname/**").hasRole("EMPLOYEE")
                         .requestMatchers(HttpMethod.POST, "/api/orders").hasRole("MANAGER")
                 );
 
