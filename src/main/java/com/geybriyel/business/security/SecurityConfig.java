@@ -26,6 +26,7 @@ public class SecurityConfig {
         httpSecurity.authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers(HttpMethod.GET, "/api/orders").hasRole("EMPLOYEE")
+                        .requestMatchers(HttpMethod.GET, "/api/orders/id/**").hasRole("EMPLOYEE")
                 );
 
 
