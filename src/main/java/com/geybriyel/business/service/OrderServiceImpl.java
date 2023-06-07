@@ -1,52 +1,58 @@
 package com.geybriyel.business.service;
 
-import com.geybriyel.business.dao.OrderDAO;
+import com.geybriyel.business.dao.OrderRepository;
 import com.geybriyel.business.entity.RepairJO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderServiceImpl implements OrderService {
-    private OrderDAO orderDAO;
+    private OrderRepository orderRepository;
 
     @Autowired
-    public OrderServiceImpl(OrderDAO orderDAO) {
-        this.orderDAO = orderDAO;
+    public OrderServiceImpl(OrderRepository orderDAO) {
+        this.orderRepository = orderDAO;
     }
 
     @Transactional
     @Override
     public void save(RepairJO order) {
-        orderDAO.save(order);
+        orderRepository.save(order);
     }
 
     @Override
     public RepairJO findById(Integer id) {
-        return orderDAO.findById(id);
+        Optional<RepairJO> result = orderRepository.findById(id);
+        if (result.isPresent()) {
+            return result.get();
+        } else {
+            throw new RuntimeException("Did not find order id - " + id);
+        }
     }
 
     @Override
     public List<RepairJO> findByLastName(String lastName) {
-        return orderDAO.findByLastName(lastName);
+        return orderRepository.findByLastName(lastName);
     }
 
     @Override
     public List<RepairJO> findAll() {
-        return orderDAO.findAll();
+        return orderRepository.findAll();
     }
 
     @Transactional
     @Override
-    public void delete(Integer id) {
-        orderDAO.delete(id);
+    public void delete(int id) {
+        orderRepository.deleteById(id);
     }
 
     @Transactional
     @Override
-    public int deleteAll() {
-        return orderDAO.deleteAll();
+    public void deleteAll() {
+        orderRepository.deleteAll();
     }
 }
