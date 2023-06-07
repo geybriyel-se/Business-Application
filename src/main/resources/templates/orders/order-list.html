@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Job Order Directory</title>
+</head>
+<body>
+    <div class="container"></div>
+    <h1>Job Order Directory</h1>
+    <hr>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Telephone Number</th>
+            <th>Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tempOrder : ${orders}">
+            <td th:text="${tempOrder.jobNumber}"></td>
+            <td th:text="${tempOrder.jobDate}"></td>
+            <td th:text="${tempOrder.firstName}"></td>
+            <td th:text="${tempOrder.lastName}"></td>
+            <td th:text="${tempOrder.phoneNumber}"></td>
+            <td th:text="${tempOrder.telephoneNumber}"></td>
+            <td th:text="${tempOrder.address}"></td>
+        </tr>
+
+        </tbody>
+    </table>
+</body>
+</html>
