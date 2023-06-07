@@ -26,6 +26,7 @@
             <th>Phone Number</th>
             <th>Telephone Number</th>
             <th>Address</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -37,6 +38,9 @@
             <td th:text="${tempOrder.phoneNumber}"></td>
             <td th:text="${tempOrder.telephoneNumber}"></td>
             <td th:text="${tempOrder.address}"></td>
+            <td>
+                <a th:href="@{/orders/showFormForUpdate(jobNumber=${tempOrder.jobNumber})}" class="btn btn-outline-warning">Update</a>
+            </td>
         </tr>
 
         </tbody>
