@@ -46,4 +46,10 @@ public class OrderController {
         model.addAttribute("order", order);
         return "orders/order-form";
     }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("jobNumber") int jobNumber) {
+        orderService.delete(jobNumber);
+        return "redirect:/orders/list";
+    }
 }
