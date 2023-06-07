@@ -5,10 +5,7 @@ import com.geybriyel.business.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.rmi.server.RemoteRef;
 import java.util.List;
@@ -38,7 +35,7 @@ public class OrderController {
     }
 
     @PostMapping("/save")
-    public String save(@RequestParam RepairJO order) {
+    public String save(@ModelAttribute("employee") RepairJO order) {
         orderService.save(order);
         return "redirect:/orders/list";
     }
