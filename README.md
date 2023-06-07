@@ -1,4 +1,4 @@
-# Job Order Management API
+# Job Order Management
 A RESTful API for managing job orders in a business environment.
 It provides endpoints for creating, reading, updating, and deleting job orders, 
 enabling CRUD operations.
@@ -54,7 +54,7 @@ The following are the areas that must be improved:
 - RepairJO (entity) needs a parent class to make it configurable
 
 ## Current Version
-**Version 3.0**: Security Enhancement
+**Version 3.0**: Security Enhancement (Main Branch)
 
 In this version, the RESTful API has been enhanced with security features to ensure secure access to the application. 
 The key changes and improvements in this version include:
@@ -65,6 +65,14 @@ The key changes and improvements in this version include:
 - Enhancements to protect against cross-site request forgery (CSRF) attacks.
 
 _**NOTE**: This utilizes the default schema for JDBC-based authentication of Spring Security for seamless integration and simplified configuration._
+
+## Thymeleaf Branch
+The Thymeleaf branch contains a front-end implementation using Thymeleaf, a Java-based templating engine. 
+It introduces a user interface that allows users to interact with the Job Order Management API 
+through a web-based application. The Thymeleaf branch enhances the functionality of the API by 
+providing a user-friendly interface for managing job orders.
+
+To explore the front-end implementation, please switch to the Thymeleaf branch.
 
 ## Previous Versions
 - **Version 1.0**: Command-Line Interface (CLI)
@@ -89,3 +97,6 @@ _**NOTE**: This utilizes the default schema for JDBC-based authentication of Spr
 - Hibernate
 - MySQL
 - Spring Security
+- Thymeleaf _(thymeleaf-front-end branch)_
+- HTML _(thymeleaf-front-end branch)_
+- Bootstrap _(thymeleaf-front-end branch)_
