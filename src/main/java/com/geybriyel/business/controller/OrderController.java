@@ -27,4 +27,11 @@ public class OrderController {
         model.addAttribute("orders", orders);
         return "orders/order-list";
     }
+
+    @GetMapping("/showFormForAdd")
+    public String showFormForAdd(Model model) {
+        RepairJO order = new RepairJO();
+        model.addAttribute("order", order);
+        return "orders/order-form";
+    }
 }
