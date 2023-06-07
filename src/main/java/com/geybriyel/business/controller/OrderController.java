@@ -39,4 +39,11 @@ public class OrderController {
         orderService.save(order);
         return "redirect:/orders/list";
     }
+
+    @GetMapping("/showFormForUpdate")
+    public String showFormForUpdate(@RequestParam("jobNumber") int jobNumber, Model model) {
+        RepairJO order = orderService.findById(jobNumber);
+        model.addAttribute("order", order);
+        return "orders/order-form";
+    }
 }
