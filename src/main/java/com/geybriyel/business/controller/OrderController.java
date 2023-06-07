@@ -38,7 +38,8 @@ public class OrderController {
     }
 
     @PostMapping("/save")
-    public void save(@RequestParam RepairJO order) {
+    public String save(@RequestParam RepairJO order) {
         orderService.save(order);
+        return "redirect:/orders/list";
     }
 }
