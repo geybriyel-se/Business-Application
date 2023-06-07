@@ -12,9 +12,10 @@
     <title>Job Order Directory</title>
 </head>
 <body>
-    <div class="container"></div>
+    <div class="container">
     <h1>Job Order Directory</h1>
     <hr>
+    <a th:ref="${/orders/showFormForAdd}" class="btn btn-outline-primary">Add new job order</a>
     <table class="table table-striped table-hover">
         <thead>
         <tr>
@@ -40,5 +41,6 @@
 
         </tbody>
     </table>
+    </div>
 </body>
 </html>
