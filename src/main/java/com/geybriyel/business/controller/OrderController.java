@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.rmi.server.RemoteRef;
 import java.util.List;
@@ -33,5 +35,10 @@ public class OrderController {
         RepairJO order = new RepairJO();
         model.addAttribute("order", order);
         return "orders/order-form";
+    }
+
+    @PostMapping("/save")
+    public void save(@RequestParam RepairJO order) {
+        orderService.save(order);
     }
 }
